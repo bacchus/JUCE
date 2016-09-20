@@ -154,6 +154,9 @@ public:
     Value getExternalLibraries()                { return getSetting (Ids::externalLibraries); }
     String getExternalLibrariesString() const   { return getSearchPathsFromString (getSettingString (Ids::externalLibraries)).joinIntoString (";"); }
 
+    Value getPrecompiledHeaderValue()           { return getSetting (Ids::precompiledHeader); }
+    String getPrecompiledHeaderString() const   { return getSettingString (Ids::precompiledHeader).replaceCharacters ("\r\n", "  "); }
+
     Value getUserNotes()                        { return getSetting (Ids::userNotes); }
 
     Value getVST3PathValue() const              { return vst3Path; }

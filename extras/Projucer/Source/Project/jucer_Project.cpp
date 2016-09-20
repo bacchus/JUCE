@@ -1561,7 +1561,8 @@ bool Project::ExporterIterator::next()
 
     if (exporter == nullptr)
     {
-        jassertfalse; // corrupted project file?
+        //jassertfalse; // corrupted project file?
+        DBG("jassertfalse - corrupted project file?");
         return next();
     }
 
