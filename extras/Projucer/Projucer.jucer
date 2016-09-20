@@ -104,6 +104,23 @@
         <MODULEPATH id="juce_core" path="../../modules"/>
       </MODULEPATHS>
     </LINUX_MAKE>
+    <QT_CREATOR targetFolder="Builds/QtCreator" extraDefs="JUCE_DISABLE_NATIVE_FILECHOOSERS=1">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="Projucer"
+                       libraryPath="/usr/X11R6/lib/"/>
+        <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="Projucer"
+                       libraryPath="/usr/X11R6/lib/"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_gui_extra" path="../../modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../modules"/>
+        <MODULEPATH id="juce_graphics" path="../../modules"/>
+        <MODULEPATH id="juce_events" path="../../modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../modules"/>
+        <MODULEPATH id="juce_cryptography" path="../../modules"/>
+        <MODULEPATH id="juce_core" path="../../modules"/>
+      </MODULEPATHS>
+    </QT_CREATOR>
   </EXPORTFORMATS>
   <MAINGROUP name="Projucer" id="NhrJq66R">
     <GROUP id="vD0TyHx" name="Application">
@@ -437,6 +454,8 @@
             file="Source/Project Saving/jucer_ProjectExport_Make.h"/>
       <FILE id="aNxs6C" name="jucer_ProjectExport_MSVC.h" compile="0" resource="0"
             file="Source/Project Saving/jucer_ProjectExport_MSVC.h"/>
+      <FILE id="Y5FkT9" name="jucer_ProjectExport_QtCreator.h" compile="0"
+            resource="0" file="Source/Project Saving/jucer_ProjectExport_QtCreator.h"/>
       <FILE id="v2h2L7" name="jucer_ProjectExport_XCode.h" compile="0" resource="0"
             file="Source/Project Saving/jucer_ProjectExport_XCode.h"/>
       <FILE id="DKN3lX" name="jucer_ProjectExporter.cpp" compile="1" resource="0"
@@ -624,8 +643,25 @@
       <FILE id="ifg9Ly" name="juce-logo-with-text.svg" compile="0" resource="1"
             file="Source/BinaryData/juce-logo-with-text.svg"/>
       <FILE id="OCyr5F" name="juce_icon.png" compile="0" resource="1" file="Source/BinaryData/juce_icon.png"/>
+<<<<<<< HEAD
       <FILE id="ceQNwo" name="offlinepage.html" compile="0" resource="1"
             file="Source/BinaryData/offlinepage.html"/>
+=======
+      <FILE id="pBWoUz" name="projectIconAndroid.png" compile="0" resource="1"
+            file="Source/BinaryData/projectIconAndroid.png"/>
+      <FILE id="sfyVGu" name="projectIconCodeblocks.png" compile="0" resource="1"
+            file="Source/BinaryData/projectIconCodeblocks.png"/>
+      <FILE id="E0ZZDs" name="projectIconLinuxMakefile.png" compile="0" resource="1"
+            file="Source/BinaryData/projectIconLinuxMakefile.png"/>
+      <FILE id="pshFMB" name="projectIconQtCreator.png" compile="0" resource="1"
+            file="Source/BinaryData/projectIconQtCreator.png"/>
+      <FILE id="FpXyT2" name="projectIconVisualStudio.png" compile="0" resource="1"
+            file="Source/BinaryData/projectIconVisualStudio.png"/>
+      <FILE id="FoXOPN" name="projectIconXcode.png" compile="0" resource="1"
+            file="Source/BinaryData/projectIconXcode.png"/>
+      <FILE id="I21x5A" name="projectIconXcodeIOS.png" compile="0" resource="1"
+            file="Source/BinaryData/projectIconXcodeIOS.png"/>
+>>>>>>> 40a0663e1... BCC: 1-st Qt merges
       <FILE id="NxFmxY" name="projucer_EULA.txt" compile="0" resource="1"
             file="Source/BinaryData/projucer_EULA.txt"/>
       <FILE id="r2M1IP" name="projucer_login_bg.svg" compile="0" resource="1"

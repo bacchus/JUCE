@@ -64,10 +64,37 @@ struct ProjectSettingsComp  : public Component,
         : project (p),
           group (project.getProjectFilenameRoot(), Icon (getIcons().settings, Colours::transparentBlack))
     {
+<<<<<<< HEAD
         addAndMakeVisible (group);
 
         updatePropertyList();
         project.addChangeListener (this);
+=======
+        tree.setMultiSelectEnabled (false);
+        setRoot (new ConfigTreeItemTypes::RootItem (p));
+
+        if (tree.getNumSelectedItems() == 0)
+            tree.getRootItem()->setSelected (true, true);
+
+       #if JUCE_MAC || JUCE_WINDOWS || JUCE_LINUX
+        ApplicationCommandManager& commandManager = ProjucerApplication::getCommandManager();
+
+        addAndMakeVisible (createExporterButton);
+        createExporterButton.setCommandToTrigger (&commandManager, CommandIDs::createNewExporter, true);
+        createExporterButton.setButtonText (commandManager.getNameOfCommand (CommandIDs::createNewExporter));
+        createExporterButton.setColour (TextButton::buttonColourId, Colours::white.withAlpha (0.5f));
+
+        addAndMakeVisible (openProjectButton);
+        openProjectButton.setCommandToTrigger (&commandManager, CommandIDs::openInIDE, true);
+        openProjectButton.setButtonText (commandManager.getNameOfCommand (CommandIDs::openInIDE));
+        openProjectButton.setColour (TextButton::buttonColourId, Colours::white.withAlpha (0.5f));
+
+        addAndMakeVisible (saveAndOpenButton);
+        saveAndOpenButton.setCommandToTrigger (&commandManager, CommandIDs::saveAndOpenInIDE, true);
+        saveAndOpenButton.setButtonText (commandManager.getNameOfCommand (CommandIDs::saveAndOpenInIDE));
+        saveAndOpenButton.setColour (TextButton::buttonColourId, Colours::white.withAlpha (0.5f));
+       #endif
+>>>>>>> 40a0663e1... BCC: 1-st Qt merges
     }
 
     ~ProjectSettingsComp()

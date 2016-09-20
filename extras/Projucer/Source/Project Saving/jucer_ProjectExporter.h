@@ -89,6 +89,11 @@ public:
     virtual bool isCodeBlocks() const    = 0;
     virtual bool isMakefile() const      = 0;
     virtual bool isAndroidStudio() const = 0;
+<<<<<<< HEAD
+=======
+    virtual bool isAndroidAnt() const    = 0;
+    //TODO: virtual bool isQtCreator() const     = 0;
+>>>>>>> 40a0663e1... BCC: 1-st Qt merges
 
     // operating system targeted by exporter
     virtual bool isAndroid() const = 0;
