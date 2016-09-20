@@ -223,10 +223,6 @@ protected:
 private:
     //==============================================================================
     void initialiseDependencyPathValues() {
-        vst2Path.referTo(Value(new DependencyPathValueSource(getSetting(Ids::vstFolder),
-                                                             Ids::vst2Path,
-                                                             TargetOS::oslinux)));
-
         vst3Path.referTo(Value(new DependencyPathValueSource(getSetting(Ids::vst3Folder),
                                                              Ids::vst3Path,
                                                              TargetOS::oslinux)));
