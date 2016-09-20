@@ -798,13 +798,36 @@ static void newExporterMenuCallback (int result, ProjectContentComponent* comp)
     }
 }
 
+inline Drawable* createDrawableFromImage (const Image& im)
+{
+    if (im.isValid())
+    {
+        DrawableImage* d = new DrawableImage();
+        d->setImage (im);
+        return d;
+    }
+
+    return nullptr;
+}
+
 void ProjectContentComponent::showNewExporterMenu()
 {
     if (project != nullptr)
     {
         PopupMenu menu;
 
-        menu.addSectionHeader ("Create a new export target:");
+        ApplicationCommandManager* commandManager = &ProjucerApplication::getCommandManager();
+        menu.addSectionHeader ("Save/Open:");
+        menu.addCommandItem(commandManager, CommandIDs::saveAndOpenInIDE, "Save & Open"
+                            , createDrawableFromImage(
+                                ImageCache::getFromMemory (BinaryData::saveopen_png
+                                                           , BinaryData::saveopen_pngSize)));
+        menu.addCommandItem(commandManager, CommandIDs::closeProject, "Close"
+                            , createDrawableFromImage(
+                                ImageCache::getFromMemory (BinaryData::close_png
+                                                           , BinaryData::close_pngSize)));
+
+        menu.addSectionHeader ("New export:");
 
         Array<ProjectExporter::ExporterTypeInfo> exporters (ProjectExporter::getExporterTypes());
 

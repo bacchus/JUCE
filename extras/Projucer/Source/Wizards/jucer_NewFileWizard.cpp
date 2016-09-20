@@ -56,7 +56,7 @@ class NewCppFileWizard  : public NewFileWizard::Type
 public:
     NewCppFileWizard() {}
 
-    String getName() override  { return "CPP File"; }
+    String getName() override  { return ".cpp"; }
 
     void createNewFile (Project&, Project::Item parent) override
     {
@@ -85,7 +85,7 @@ class NewHeaderFileWizard  : public NewFileWizard::Type
 public:
     NewHeaderFileWizard() {}
 
-    String getName() override  { return "Header File"; }
+    String getName() override  { return ".h"; }
 
     void createNewFile (Project&, Project::Item parent) override
     {
@@ -114,7 +114,7 @@ class NewCppAndHeaderFileWizard  : public NewFileWizard::Type
 public:
     NewCppAndHeaderFileWizard() {}
 
-    String getName() override  { return "CPP & Header File"; }
+    String getName() override  { return ".cpp, .h"; }
 
     void createNewFile (Project&, Project::Item parent) override
     {
@@ -134,7 +134,7 @@ class NewComponentFileWizard  : public NewFileWizard::Type
 public:
     NewComponentFileWizard() {}
 
-    String getName() override  { return "Component class (split between a CPP & header)"; }
+    String getName() override  { return "Component (.cpp, .h)"; }
 
     void createNewFile (Project&, Project::Item parent) override
     {
@@ -198,7 +198,7 @@ class NewSingleFileComponentFileWizard  : public NewComponentFileWizard
 public:
     NewSingleFileComponentFileWizard() {}
 
-    String getName() override  { return "Component class (in a single source file)"; }
+    String getName() override  { return "Component (.cpp)"; }
 
     void createFiles (Project::Item parent, const String& className, const File& newFile) override
     {
@@ -248,7 +248,7 @@ NewFileWizard::~NewFileWizard()
 void NewFileWizard::addWizardsToMenu (PopupMenu& m) const
 {
     for (int i = 0; i < wizards.size(); ++i)
-        m.addItem (menuBaseID + i, "Add New " + wizards.getUnchecked(i)->getName() + "...");
+        m.addItem (menuBaseID + i, "+ " + wizards.getUnchecked(i)->getName() + "...");
 }
 
 bool NewFileWizard::runWizardFromMenu (int chosenMenuItemID, Project& project, const Project::Item& projectGroupToAddTo) const

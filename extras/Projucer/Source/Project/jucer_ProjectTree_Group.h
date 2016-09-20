@@ -157,6 +157,14 @@ public:
     void showPopupMenu() override
     {
         PopupMenu m;
+
+        if (isRoot())
+        {
+            m.addCommandItem (ProjucerApplication::getApp().commandManager, CommandIDs::saveAndOpenInIDE, "Save & Open");
+            m.addCommandItem (ProjucerApplication::getApp().commandManager, CommandIDs::closeProject, "Close");
+            m.addSeparator();
+        }
+
         addCreateFileMenuItems (m);
 
         m.addSeparator();

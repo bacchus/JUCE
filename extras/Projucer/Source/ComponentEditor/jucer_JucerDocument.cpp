@@ -746,7 +746,7 @@ class NewGUIComponentWizard  : public NewFileWizard::Type
 public:
     NewGUIComponentWizard() {}
 
-    String getName() override  { return "GUI Component"; }
+    String getName() override  { return "GUI"; }
 
     void createNewFile (Project& project, Project::Item parent) override
     {
