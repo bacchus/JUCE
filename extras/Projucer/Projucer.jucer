@@ -13,10 +13,10 @@
                extraFrameworks="AudioUnit; Accelerate; AVFoundation; CoreAudio; CoreAudioKit; CoreMIDI; DiscRecording; QuartzCore; AudioToolbox; OpenGL; QTKit; QuickTime">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="Projucer"
-                       osxSDK="default" osxCompatibility="10.9 SDK" osxArchitecture="default"
+                       osxSDK="default" osxCompatibility="10.10 SDK" osxArchitecture="default"
                        headerPath="" libraryPath="" cppLibType="libc++"/>
         <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="Projucer"
-                       osxSDK="default" osxCompatibility="10.7 SDK" osxArchitecture="default"
+                       osxSDK="default" osxCompatibility="10.10 SDK" osxArchitecture="default"
                        headerPath="" libraryPath="" cppLibType="libc++"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
@@ -624,6 +624,7 @@
             file="Source/BinaryData/background_logo.svg"/>
       <FILE id="a2EM1O" name="background_tile.png" compile="0" resource="1"
             file="Source/BinaryData/background_tile.png"/>
+      <FILE id="S0sEnl" name="close.png" compile="0" resource="1" file="Source/BinaryData/close.png"/>
       <FILE id="xboS86" name="colourscheme_dark.xml" compile="0" resource="1"
             file="Source/BinaryData/colourscheme_dark.xml"/>
       <FILE id="cVh68s" name="colourscheme_light.xml" compile="0" resource="1"
@@ -643,31 +644,17 @@
       <FILE id="ifg9Ly" name="juce-logo-with-text.svg" compile="0" resource="1"
             file="Source/BinaryData/juce-logo-with-text.svg"/>
       <FILE id="OCyr5F" name="juce_icon.png" compile="0" resource="1" file="Source/BinaryData/juce_icon.png"/>
-<<<<<<< HEAD
       <FILE id="ceQNwo" name="offlinepage.html" compile="0" resource="1"
             file="Source/BinaryData/offlinepage.html"/>
-=======
-      <FILE id="pBWoUz" name="projectIconAndroid.png" compile="0" resource="1"
-            file="Source/BinaryData/projectIconAndroid.png"/>
-      <FILE id="sfyVGu" name="projectIconCodeblocks.png" compile="0" resource="1"
-            file="Source/BinaryData/projectIconCodeblocks.png"/>
-      <FILE id="E0ZZDs" name="projectIconLinuxMakefile.png" compile="0" resource="1"
-            file="Source/BinaryData/projectIconLinuxMakefile.png"/>
       <FILE id="pshFMB" name="projectIconQtCreator.png" compile="0" resource="1"
             file="Source/BinaryData/projectIconQtCreator.png"/>
-      <FILE id="FpXyT2" name="projectIconVisualStudio.png" compile="0" resource="1"
-            file="Source/BinaryData/projectIconVisualStudio.png"/>
-      <FILE id="FoXOPN" name="projectIconXcode.png" compile="0" resource="1"
-            file="Source/BinaryData/projectIconXcode.png"/>
-      <FILE id="I21x5A" name="projectIconXcodeIOS.png" compile="0" resource="1"
-            file="Source/BinaryData/projectIconXcodeIOS.png"/>
->>>>>>> 40a0663e1... BCC: 1-st Qt merges
       <FILE id="NxFmxY" name="projucer_EULA.txt" compile="0" resource="1"
             file="Source/BinaryData/projucer_EULA.txt"/>
       <FILE id="r2M1IP" name="projucer_login_bg.svg" compile="0" resource="1"
             file="Source/BinaryData/projucer_login_bg.svg"/>
       <FILE id="eO1a1G" name="RecentFilesMenuTemplate.nib" compile="0" resource="1"
             file="Source/BinaryData/RecentFilesMenuTemplate.nib"/>
+      <FILE id="UKX53H" name="saveopen.png" compile="0" resource="1" file="Source/BinaryData/saveopen.png"/>
       <FILE id="BAM2qw" name="wizard_AnimatedApp.svg" compile="0" resource="1"
             file="Source/BinaryData/wizard_AnimatedApp.svg"/>
       <FILE id="pQDKOo" name="wizard_AudioApp.svg" compile="0" resource="1"

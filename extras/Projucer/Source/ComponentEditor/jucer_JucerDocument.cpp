@@ -428,6 +428,27 @@ void JucerDocument::fillInGeneratedCode (GeneratedCode& code) const
     jassert (e != nullptr);
     code.jucerMetadata = e->createDocument ("", false, false);
 
+    // BCC: save xml to external file
+    if (nullptr != cpp)
+    {
+        Project* project = cpp->getProject();
+        if (nullptr != project)
+        {
+            File proDir = project->getProjectFolder();
+            File xmlDir = proDir.getChildFile("xmls");
+            File curCppXmlDir = File(xmlDir.getFullPathName() + "/" + cpp->getFile().getParentDirectory().getRelativePathFrom(proDir));
+            if (!curCppXmlDir.exists())
+                curCppXmlDir.createDirectory();
+            String cppXmlFileName = cpp->getFile().getFileNameWithoutExtension() + ".xml";
+            File curXmlFile = curCppXmlDir.getChildFile(cppXmlFileName);
+            ScopedPointer<XmlElement> eExt (createXml());
+            jassert (eExt != nullptr);
+            eExt->writeToFile(curXmlFile, String::empty);
+            Logger::writeToLog("BCC: " + cppXmlFileName + " written");
+        }
+    }
+    // BCC: end
+
     resources.fillInGeneratedCode (code);
 
     code.constructorCode

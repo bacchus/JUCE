@@ -134,6 +134,7 @@ void ProjucerApplication::initialiseBasics()
     ImageCache::setCacheTimeout (30 * 1000);
     icons = new Icons();
     tooltipWindow.setMillisecondsBeforeTipAppears (1200);
+    //LocalisedStrings::setCurrentMappings(new LocalisedStrings(String(CharPointer_UTF8(BinaryData::introjucer_ua_trans)), false));
 }
 
 bool ProjucerApplication::initialiseLogger (const char* filePrefix)
@@ -626,8 +627,8 @@ void ProjucerApplication::getCommandInfo (CommandID commandID, ApplicationComman
 
             result.setInfo (isLoggedIn
                                ? String ("Sign out ") + username + "..."
-                               : String ("Sign in..."),
-                            "Log out of your JUCE account", CommandCategories::general, 0);
+                           : String ("Sign in..."),
+                        "Log out of your JUCE account", CommandCategories::general, 0);
         }
         break;
 
