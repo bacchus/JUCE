@@ -1,11 +1,7 @@
 /*
-  ==============================================================================
-
     FILENAME
     Created: DATE
     Author:  AUTHOR
-
-  ==============================================================================
 */
 
 INCLUDE_JUCE
@@ -21,22 +17,14 @@ COMPONENTCLASS::COMPONENTCLASS()
 
 COMPONENTCLASS::~COMPONENTCLASS()
 {
+
 }
 
 void COMPONENTCLASS::paint (Graphics& g)
 {
-    /* This demo code just fills the component's background and
-       draws some placeholder text to get you started.
-
-       You should replace everything in this method with your own
-       drawing code..
-    */
-
-    g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));   // clear the background
-
+    g.fillAll (Colour (0xffaa7711));
     g.setColour (Colours::grey);
     g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
-
     g.setColour (Colours::white);
     g.setFont (14.0f);
     g.drawText ("COMPONENTCLASS", getLocalBounds(),
@@ -49,3 +37,4 @@ void COMPONENTCLASS::resized()
     // components that your component contains..
 
 }
+

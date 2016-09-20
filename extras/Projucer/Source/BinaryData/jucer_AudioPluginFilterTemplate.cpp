@@ -1,15 +1,10 @@
 /*
-  ==============================================================================
-
-    This file was auto-generated!
-
-    It contains the basic framework code for a JUCE plugin processor.
-
-  ==============================================================================
+    FILENAME
+    Created: DATE
+    Author:  AUTHOR
 */
 
 FILTERHEADERS
-
 
 //==============================================================================
 FILTERCLASSNAME::FILTERCLASSNAME()

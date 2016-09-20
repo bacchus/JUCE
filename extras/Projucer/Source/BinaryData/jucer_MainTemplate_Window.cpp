@@ -1,11 +1,7 @@
 /*
-  ==============================================================================
-
-    This file was auto-generated!
-
-    It contains the basic startup code for a Juce application.
-
-  ==============================================================================
+    FILENAME
+    Created: DATE
+    Author:  AUTHOR
 */
 
 APPHEADERS
@@ -67,7 +63,7 @@ public:
         {
             setUsingNativeTitleBar (true);
             setContentOwned (new CONTENTCOMPCLASS(), true);
-
+            setResizable(true, true);
             centreWithSize (getWidth(), getHeight());
             setVisible (true);
         }

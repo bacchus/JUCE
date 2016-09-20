@@ -9,10 +9,11 @@
 INCLUDE_JUCE
 
 //==============================================================================
-/*
-    This component lives inside our window, and this is where you should put all
-    your controls and content.
-*/
+/**
+ * This component lives inside our window
+ * , and this is where you should put all
+ * your controls and content.
+ */
 class MainContentComponent   : public AnimatedAppComponent
 {
 public:

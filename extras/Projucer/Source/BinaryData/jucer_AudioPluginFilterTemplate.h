@@ -1,22 +1,19 @@
 /*
-  ==============================================================================
-
-    This file was auto-generated!
-
-    It contains the basic framework code for a JUCE plugin processor.
-
-  ==============================================================================
+    FILENAME
+    Created: DATE
+    Author:  AUTHOR
 */
 
 #pragma once
 
 APPHEADERS
 
-
 //==============================================================================
 /**
-*/
-class FILTERCLASSNAME  : public AudioProcessor
+ * FILTERCLASSNAME
+ */
+class FILTERCLASSNAME
+        : public AudioProcessor
 {
 public:
     //==============================================================================
@@ -27,9 +24,9 @@ public:
     void prepareToPlay (double sampleRate, int samplesPerBlock) override;
     void releaseResources() override;
 
-   #ifndef JucePlugin_PreferredChannelConfigurations
+#ifndef JucePlugin_PreferredChannelConfigurations
     bool isBusesLayoutSupported (const BusesLayout& layouts) const override;
-   #endif
+#endif
 
     void processBlock (AudioSampleBuffer&, MidiBuffer&) override;
 

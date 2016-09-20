@@ -1,15 +1,10 @@
 /*
-  ==============================================================================
-
-    This file was auto-generated!
-
-    It contains the basic framework code for a JUCE plugin editor.
-
-  ==============================================================================
+    FILENAME
+    Created: DATE
+    Author:  AUTHOR
 */
 
 EDITORCPPHEADERS
-
 
 //==============================================================================
 EDITORCLASSNAME::EDITORCLASSNAME (FILTERCLASSNAME& p)
@@ -27,12 +22,10 @@ EDITORCLASSNAME::~EDITORCLASSNAME()
 //==============================================================================
 void EDITORCLASSNAME::paint (Graphics& g)
 {
-    // (Our component is opaque, so we must completely fill the background with a solid colour)
-    g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
-
+    g.fillAll (Colour (0xeeaa7711));
     g.setColour (Colours::white);
     g.setFont (15.0f);
-    g.drawFittedText ("Hello World!", getLocalBounds(), Justification::centred, 1);
+    g.drawText ("EDITORCLASSNAME", getLocalBounds(), Justification::centred, 1);
 }
 
 void EDITORCLASSNAME::resized()
@@ -40,3 +33,4 @@ void EDITORCLASSNAME::resized()
     // This is generally where you'll want to lay out the positions of any
     // subcomponents in your editor..
 }
+

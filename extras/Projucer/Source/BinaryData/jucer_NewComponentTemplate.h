@@ -1,11 +1,7 @@
 /*
-  ==============================================================================
-
     FILENAME
     Created: DATE
     Author:  AUTHOR
-
-  ==============================================================================
 */
 
 #pragma once
@@ -13,9 +9,11 @@
 INCLUDE_JUCE
 
 //==============================================================================
-/*
-*/
-class COMPONENTCLASS    : public Component
+/**
+ * COMPONENTCLASS
+ */
+class COMPONENTCLASS
+        : public Component
 {
 public:
     COMPONENTCLASS();

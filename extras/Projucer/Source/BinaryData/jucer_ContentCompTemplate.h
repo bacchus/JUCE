@@ -1,22 +1,19 @@
 /*
-  ==============================================================================
-
-    This file was auto-generated!
-
-  ==============================================================================
+    FILENAME
+    Created: DATE
+    Author:  AUTHOR
 */
 
 #pragma once
 
 INCLUDE_JUCE
 
-
 //==============================================================================
-/*
-    This component lives inside our window, and this is where you should put all
-    your controls and content.
-*/
-class CONTENTCOMPCLASS   : public Component
+/**
+ * CONTENTCOMPCLASS
+ */
+class CONTENTCOMPCLASS
+        : public Component
 {
 public:
     //==============================================================================
