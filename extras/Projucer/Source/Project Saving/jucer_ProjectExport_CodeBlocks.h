@@ -175,21 +175,6 @@ public:
         jassert (targets.size() > 0);
     }
 
-    //==============================================================================
-    void initialiseDependencyPathValues() override
-    {
-        DependencyPathOS pathOS = isLinux() ? TargetOS::linux
-        : TargetOS::windows;
-
-        vst3Path.referTo (Value (new DependencyPathValueSource (getSetting (Ids::vst3Folder), Ids::vst3Path, pathOS)));
-
-        if (! isLinux())
-        {
-            aaxPath.referTo  (Value (new DependencyPathValueSource (getSetting (Ids::aaxFolder), Ids::aaxPath, pathOS)));
-            rtasPath.referTo (Value (new DependencyPathValueSource (getSetting (Ids::rtasFolder), Ids::rtasPath, pathOS)));
-        }
-    }
-
 private:
     //==============================================================================
     class CodeBlocksBuildConfiguration  : public BuildConfiguration

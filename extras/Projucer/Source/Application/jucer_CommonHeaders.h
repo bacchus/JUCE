@@ -33,7 +33,7 @@ struct TargetOS
     {
         windows = 0,
         osx,
-        linux,
+        oslinux,
         unknown
     };
 
@@ -44,7 +44,7 @@ struct TargetOS
        #elif JUCE_MAC
         return osx;
        #elif JUCE_LINUX
-        return linux;
+        return oslinux;
        #else
         return unknown;
        #endif
