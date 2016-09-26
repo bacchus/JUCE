@@ -454,7 +454,7 @@
             file="Source/Project Saving/jucer_ProjectExport_Make.h"/>
       <FILE id="aNxs6C" name="jucer_ProjectExport_MSVC.h" compile="0" resource="0"
             file="Source/Project Saving/jucer_ProjectExport_MSVC.h"/>
-      <FILE id="Y5FkT9" name="jucer_ProjectExport_QtCreator.h" compile="0"
+      <FILE id="yQIpnT" name="jucer_ProjectExport_QtCreator.h" compile="0"
             resource="0" file="Source/Project Saving/jucer_ProjectExport_QtCreator.h"/>
       <FILE id="v2h2L7" name="jucer_ProjectExport_XCode.h" compile="0" resource="0"
             file="Source/Project Saving/jucer_ProjectExport_XCode.h"/>
@@ -624,7 +624,7 @@
             file="Source/BinaryData/background_logo.svg"/>
       <FILE id="a2EM1O" name="background_tile.png" compile="0" resource="1"
             file="Source/BinaryData/background_tile.png"/>
-      <FILE id="S0sEnl" name="close.png" compile="0" resource="1" file="Source/BinaryData/close.png"/>
+      <FILE id="ajY3t4" name="close.png" compile="0" resource="1" file="Source/BinaryData/close.png"/>
       <FILE id="xboS86" name="colourscheme_dark.xml" compile="0" resource="1"
             file="Source/BinaryData/colourscheme_dark.xml"/>
       <FILE id="cVh68s" name="colourscheme_light.xml" compile="0" resource="1"
@@ -646,7 +646,7 @@
       <FILE id="OCyr5F" name="juce_icon.png" compile="0" resource="1" file="Source/BinaryData/juce_icon.png"/>
       <FILE id="ceQNwo" name="offlinepage.html" compile="0" resource="1"
             file="Source/BinaryData/offlinepage.html"/>
-      <FILE id="pshFMB" name="projectIconQtCreator.png" compile="0" resource="1"
+      <FILE id="cqjh1E" name="projectIconQtCreator.png" compile="0" resource="1"
             file="Source/BinaryData/projectIconQtCreator.png"/>
       <FILE id="NxFmxY" name="projucer_EULA.txt" compile="0" resource="1"
             file="Source/BinaryData/projucer_EULA.txt"/>
@@ -654,7 +654,7 @@
             file="Source/BinaryData/projucer_login_bg.svg"/>
       <FILE id="eO1a1G" name="RecentFilesMenuTemplate.nib" compile="0" resource="1"
             file="Source/BinaryData/RecentFilesMenuTemplate.nib"/>
-      <FILE id="UKX53H" name="saveopen.png" compile="0" resource="1" file="Source/BinaryData/saveopen.png"/>
+      <FILE id="Jy8bsV" name="saveopen.png" compile="0" resource="1" file="Source/BinaryData/saveopen.png"/>
       <FILE id="BAM2qw" name="wizard_AnimatedApp.svg" compile="0" resource="1"
             file="Source/BinaryData/wizard_AnimatedApp.svg"/>
       <FILE id="pQDKOo" name="wizard_AudioApp.svg" compile="0" resource="1"
