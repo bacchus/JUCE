@@ -25,11 +25,19 @@
 
 #include "jucer_ProjectExporter.h"
 
+#if JUCE_MAC
+namespace {
+const char* const qt_osxVersionDefault         = "default";
+const int qt_oldestSDKVersion  = 5;
+const int qt_currentSDKVersion = 12;
+}
+#endif
+
 class QtCreatorProjectExporter: public ProjectExporter {
 public:
     //==============================================================================
     // its not only Linux, its also Win and Mac, mb Android later
-    static const char* getNameQtCreator()           { return "QtCreator"; }
+    static const char* getNameQtCreator()       { return "QtCreator"; }
     static const char* getValueTreeTypeName()   { return "QT_CREATOR"; }
 
     static QtCreatorProjectExporter* createForSettings(Project& project, const ValueTree& settings) {
@@ -107,17 +115,18 @@ public:
     bool supportsAUv3() const override                  { return false; }
     bool supportsStandalone() const override            { return false; }
 
-
     Value getCppStandardValue()                 { return getSetting(Ids::cppLanguageStandard); }
     String getCppStandardString() const         { return getSettingString(Ids::cppLanguageStandard); }
 
 //    Value getQtAppTypeStandardValue()           { return getSetting(Ids::qtAppType); }
 //    String getQtAppTypeStandardString() const   { return settings[Ids::qtAppType]; }
 
-    void createExporterProperties(PropertyListBuilder& properties) override {
+    void createExporterProperties(PropertyListBuilder& props) override {
+
         static const char* cppStandardNames[]  = { "C++03", "C++11", nullptr };
         static const char* cppStandardValues[] = { "-std=c++03", "-std=c++11", nullptr };
-        properties.add(new ChoicePropertyComponent(
+
+        props.add(new ChoicePropertyComponent(
                            getCppStandardValue(),
                            "C++ standard to use",
                            StringArray(cppStandardNames),
@@ -126,12 +135,35 @@ public:
 
 //        static const char* qtAppTypeNames[]  = { "Default", "Console", nullptr };
 //        static const char* qtAppTypeValues[] = { "app", "console", nullptr };
-//        properties.add(new ChoicePropertyComponent(
+//        props.add(new ChoicePropertyComponent(
 //                           getQtAppTypeStandardValue(),
 //                           "Qt app type",
 //                           StringArray(qtAppTypeNames),
 //                           Array<var> (qtAppTypeValues)),
 //                       "Qt application type for qt project");
+
+#if JUCE_MAC
+            StringArray sdkVersionNames, osxVersionNames;
+            Array<var> versionValues;
+
+            sdkVersionNames.add ("Use Default");
+            osxVersionNames.add ("Use Default");
+            versionValues.add (qt_osxVersionDefault);
+
+            for (int ver = qt_oldestSDKVersion; ver <= qt_currentSDKVersion; ++ver)
+            {
+                sdkVersionNames.add (getSDKName (ver));
+                osxVersionNames.add (getOSXVersionName (ver));
+                versionValues.add (getSDKName (ver));
+            }
+
+            props.add (new ChoicePropertyComponent (getSetting(Ids::osxSDK), "OSX Base SDK Version", sdkVersionNames, versionValues),
+                       "The version of OSX to link against in the XCode build.");
+
+            props.add (new ChoicePropertyComponent (getSetting(Ids::osxCompatibility), "OSX Deployment Target", osxVersionNames, versionValues),
+                       "The minimum version of OSX that the target binary will be compatible with.");
+#endif
+
     }
 
     //==============================================================================
@@ -548,9 +580,26 @@ private:
         out << "CONFIG -= debug_and_release" << newLine;
         //TODO: if (getCppStandardString() == "-std=c++11")
         out << "CONFIG += c++11" << newLine;
+
 #if JUCE_MAC
         //TODO: check if mac sdk 10.11
-        out << "QMAKE_MAC_SDK = macosx10.11" << newLine;
+
+        const String sdk (getSettingString(Ids::osxSDK));
+        const String sdkCompat (getSettingString(Ids::osxCompatibility));
+
+        // if the user doesn't set it, then use the last known version that works well with JUCE
+        String deploymentTarget = "10.10";
+        int curentVer = 10;
+
+        for (int ver = qt_oldestSDKVersion; ver <= qt_currentSDKVersion; ++ver)
+        {
+            if (sdk == getSDKName (ver))        curentVer = ver;
+            if (sdkCompat == getSDKName (ver))  deploymentTarget = "10." + String (ver);
+        }
+
+        out << "QMAKE_MAC_SDK = macosx10." << curentVer << newLine; //s.add ("SDKROOT = macosx10." + String (ver));
+        out << "QMAKE_MACOSX_DEPLOYMENT_TARGET = " << deploymentTarget << newLine; //s.add ("MACOSX_DEPLOYMENT_TARGET = " + deploymentTarget);
+
 #endif
         //NOTE: makes posible to have "dir1/file.cpp" and "dir2/file.cpp"
         //out << "CONFIG += object_parallel_to_source" << newLine;
@@ -600,6 +649,19 @@ private:
 
         out << newLine;
     }
+
+#if JUCE_MAC
+    static String getOSXVersionName (int version)
+    {
+        jassert (version >= 4);
+        return "10." + String (version);
+    }
+
+    static String getSDKName (int version)
+    {
+        return getOSXVersionName (version) + " SDK";
+    }
+#endif
 
     JUCE_DECLARE_NON_COPYABLE(QtCreatorProjectExporter)
 };
