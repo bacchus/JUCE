@@ -23,6 +23,7 @@
 */
 #pragma once
 
+#include "JuceHeader.h"
 #include "jucer_ProjectExporter.h"
 
 #if JUCE_MAC
@@ -121,6 +122,9 @@ public:
 //    Value getQtAppTypeStandardValue()           { return getSetting(Ids::qtAppType); }
 //    String getQtAppTypeStandardString() const   { return settings[Ids::qtAppType]; }
 
+    Value getQtPriFileValue()                 { return getSetting(Ids::qtPriFile); }
+    String getQtPriFileString() const         { return getSettingString(Ids::qtPriFile); }
+
     void createExporterProperties(PropertyListBuilder& props) override {
 
         static const char* cppStandardNames[]  = { "C++03", "C++11", nullptr };
@@ -141,6 +145,10 @@ public:
 //                           StringArray(qtAppTypeNames),
 //                           Array<var> (qtAppTypeValues)),
 //                       "Qt application type for qt project");
+
+        props.add (new TextPropertyComponent (getQtPriFileValue(), "Extra Qt Pri Files", 8192, true),
+                   "A .pri file is included by a .pro file"
+                   "and defines, extra options.");
 
 #if JUCE_MAC
             StringArray sdkVersionNames, osxVersionNames;
@@ -630,6 +638,28 @@ private:
         }
 
         out << newLine;
+
+
+
+
+        String priFilesString = getQtPriFileString();
+        if (priFilesString.isNotEmpty()) {
+            StringArray priFilesArr;
+            priFilesArr.addTokens(priFilesString, true);
+            if (priFilesArr.size() > 0) {
+                out << newLine;
+                for (String priFileName: priFilesArr) {
+                    if (File::isAbsolutePath(priFileName)) {
+                        out << "include(" << addQuotesIfContainsSpaces(priFileName) << ")";
+                    } else {
+                        RelativePath relPath(File(projectFolder).getChildFile(priFileName), getTargetFolder(), RelativePath::buildTargetFolder);
+                        out << "include(" << addQuotesIfContainsSpaces(relPath.toUnixStyle()) << ")";
+                    }
+                    out << newLine;
+                }
+                out << newLine;
+            }
+        }
     }
 
     void writeQtProject(OutputStream& out) const {
