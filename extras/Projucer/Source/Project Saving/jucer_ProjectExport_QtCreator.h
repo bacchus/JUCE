@@ -449,6 +449,10 @@ private:
             out << " -lcurl";
         }
 
+        out << " -lfreetype -lX11 -lXext -lXinerama";
+
+        out << newLine << newLine;
+
 #elif JUCE_WINDOWS
         out << "    win32:LIBS += -lkernel32 -luser32 -lgdi32 -lwinspool -lcomdlg32 -ladvapi32 -lshell32 -lole32 -loleaut32 -luuid -lodbc32 -lodbccp32";
         out << newLine;
