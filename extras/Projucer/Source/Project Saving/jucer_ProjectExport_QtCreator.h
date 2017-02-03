@@ -150,6 +150,9 @@ public:
                    "A .pri file is included by a .pro file"
                    "and defines, extra options.");
 
+        props.add (new TextPropertyComponent ( getPrecompiledHeaderValue(), "Precompiled header file", 255, false)
+                   , "Precompiled header file, path relative to .jucer file" );
+
 #if JUCE_MAC
             StringArray sdkVersionNames, osxVersionNames;
             Array<var> versionValues;
@@ -192,12 +195,12 @@ public:
         makefileTargetSuffix = "";
 
 #if JUCE_MAC
-//        if (type.isStaticLibrary())
-//            makefileTargetSuffix = ".a";
-//        else if (type.isDynamicLibrary())
-//            makefileTargetSuffix = ".so";
-//        else if (type.isAudioPlugin())
-//            makefileIsDLL = true;
+        if (type.isStaticLibrary())
+            makefileTargetSuffix = ".a";
+        else if (type.isDynamicLibrary())
+            makefileTargetSuffix = ".so";
+        else if (type.isAudioPlugin())
+            makefileIsDLL = true;
 #elif JUCE_WINDOWS
         if (type.isStaticLibrary())
             makefileTargetSuffix = ".lib";
@@ -327,6 +330,16 @@ private:
     }
 
     void writeCxxFlags(OutputStream& out, const BuildConfiguration& config) const {
+
+        //precompiled header section
+        String precompiledHeader = config.exporter.getPrecompiledHeaderString ();
+        if (precompiledHeader.isNotEmpty ())
+        {
+            File pchFile = config.project.resolveFilename (precompiledHeader);
+            RelativePath pchRelPath = RelativePath (pchFile, config.exporter.getTargetFolder(), RelativePath::buildTargetFolder);
+            out << "    CONFIG += precompile_header" << newLine;
+            out << "    PRECOMPILED_HEADER = " << pchRelPath.toUnixStyle() << newLine;
+        }
 
 #if JUCE_MAC
         // macos flags
