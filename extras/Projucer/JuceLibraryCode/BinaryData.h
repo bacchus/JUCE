@@ -12,13 +12,13 @@ namespace BinaryData
     const int            gradlewrapper_jarSize = 53636;
 
     extern const char*   gradlew;
-    const int            gradlewSize = 4971;
+    const int            gradlewSize = 5131;
 
     extern const char*   gradlew_bat;
     const int            gradlew_batSize = 2404;
 
     extern const char*   LICENSE;
-    const int            LICENSESize = 11325;
+    const int            LICENSESize = 11527;
 
     extern const char*   jucer_AnimatedComponentTemplate_cpp;
     const int            jucer_AnimatedComponentTemplate_cppSize = 1887;
