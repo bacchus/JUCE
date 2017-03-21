@@ -65,3 +65,4 @@ END_JUCER_METADATA
 %%staticMemberDefinitions%%
 //[EndFile] You can add extra defines here...
 //[/EndFile]
+

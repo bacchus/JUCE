@@ -42,15 +42,12 @@ public:
 
     void paint (Graphics& g) override
     {
-        // You can add your component specific drawing code here!
-        // This will draw over the top of the openGL background.
+
     }
 
     void resized() override
     {
-        // This is called when the MainContentComponent is resized.
-        // If you add any child components, this is where you should
-        // update their positions.
+
     }
 
 

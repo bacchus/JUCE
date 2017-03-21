@@ -1802,7 +1802,8 @@ static const unsigned char temp_binary_data_10[] =
 "\r\n"
 "%%staticMemberDefinitions%%\r\n"
 "//[EndFile] You can add extra defines here...\r\n"
-"//[/EndFile]\r\n";
+"//[/EndFile]\r\n"
+"\r\n";
 
 const char* jucer_ComponentTemplate_cpp = (const char*) temp_binary_data_10;
 
@@ -1858,7 +1859,8 @@ static const unsigned char temp_binary_data_11[] =
 "};\r\n"
 "\r\n"
 "//[EndFile] You can add extra defines here...\r\n"
-"//[/EndFile]\r\n";
+"//[/EndFile]\r\n"
+"\r\n";
 
 const char* jucer_ComponentTemplate_h = (const char*) temp_binary_data_11;
 
@@ -1886,6 +1888,7 @@ static const unsigned char temp_binary_data_12[] =
 "void CONTENTCOMPCLASS::paint (Graphics& g)\r\n"
 "{\r\n"
 <<<<<<< HEAD
+<<<<<<< HEAD
 "    // (Our component is opaque, so we must completely fill the background with a solid colour)\r\n"
 "    g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));\r\n"
 "\r\n"
@@ -1896,17 +1899,20 @@ static const unsigned char temp_binary_data_12[] =
 "    g.fillAll (Colour (0xffaa7711));\n"
 "    g.setFont (Font (16.0f));\n"
 "    g.setColour (Colours::white);\n"
+=======
+"    g.fillAll (Colour (0xffaa7711));\r\n"
+"    g.setFont (Font (16.0f));\r\n"
+"    g.setColour (Colours::white);\r\n"
+>>>>>>> 879e4aa94... BCC: mac cleanup
 "    g.drawText (\"CONTENTCOMPCLASS\", getLocalBounds(), Justification::centred, true);\r\n"
 >>>>>>> cc46d4113... BCC: juce resaved with new ver
 "}\r\n"
 "\r\n"
 "void CONTENTCOMPCLASS::resized()\r\n"
 "{\r\n"
-"    // This is called when the CONTENTCOMPCLASS is resized.\r\n"
-"    // If you add any child components, this is where you should\r\n"
-"    // update their positions.\r\n"
-"    \r\n"
-"}\r\n";
+"\r\n"
+"}\r\n"
+"\r\n";
 
 const char* jucer_ContentCompTemplate_cpp = (const char*) temp_binary_data_12;
 
@@ -1940,7 +1946,8 @@ static const unsigned char temp_binary_data_13[] =
 "private:\r\n"
 "    //==============================================================================\r\n"
 "    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (CONTENTCOMPCLASS)\r\n"
-"};\r\n";
+"};\r\n"
+"\r\n";
 
 const char* jucer_ContentCompTemplate_h = (const char*) temp_binary_data_13;
 
@@ -1953,13 +1960,12 @@ static const unsigned char temp_binary_data_14[] =
 "public:\r\n"
 "    COMPONENTCLASS()\r\n"
 "    {\r\n"
-"        // In your constructor, you should add any child components, and\r\n"
-"        // initialise any special settings that your component needs.\r\n"
 "\r\n"
 "    }\r\n"
 "\r\n"
 "    ~COMPONENTCLASS()\r\n"
 "    {\r\n"
+"\r\n"
 "    }\r\n"
 "\r\n"
 "    void paint (Graphics& g) override\r\n"
@@ -1986,14 +1992,13 @@ static const unsigned char temp_binary_data_14[] =
 "\r\n"
 "    void resized() override\r\n"
 "    {\r\n"
-"        // This method is where you should set the bounds of any child\r\n"
-"        // components that your component contains..\r\n"
 "\r\n"
 "    }\r\n"
 "\r\n"
 "private:\r\n"
 "    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (COMPONENTCLASS)\r\n"
-"};\r\n";
+"};\r\n"
+"\r\n";
 
 const char* jucer_InlineComponentTemplate_h = (const char*) temp_binary_data_14;
 
@@ -2200,7 +2205,6 @@ static const unsigned char temp_binary_data_18[] =
 "\r\n"
 "APPHEADERS\r\n"
 "\r\n"
-"\r\n"
 "//==============================================================================\r\n"
 "class APPCLASSNAME  : public JUCEApplication\r\n"
 "{\r\n"
@@ -2287,7 +2291,8 @@ static const unsigned char temp_binary_data_18[] =
 "\r\n"
 "//==============================================================================\r\n"
 "// This macro generates the main() routine that launches the app.\r\n"
-"START_JUCE_APPLICATION (APPCLASSNAME)\r\n";
+"START_JUCE_APPLICATION (APPCLASSNAME)\r\n"
+"\r\n";
 
 const char* jucer_MainTemplate_Window_cpp = (const char*) temp_binary_data_18;
 
@@ -2299,14 +2304,13 @@ static const unsigned char temp_binary_data_19[] =
 "    Author:  AUTHOR\r\n"
 "*/\r\n"
 "\r\n"
-"INCLUDE_JUCE\r\n"
 "INCLUDE_CORRESPONDING_HEADER\r\n"
+"\r\n"
+"INCLUDE_JUCE\r\n"
 "\r\n"
 "//==============================================================================\r\n"
 "COMPONENTCLASS::COMPONENTCLASS()\r\n"
 "{\r\n"
-"    // In your constructor, you should add any child components, and\r\n"
-"    // initialise any special settings that your component needs.\r\n"
 "\r\n"
 "}\r\n"
 "\r\n"
@@ -2317,6 +2321,7 @@ static const unsigned char temp_binary_data_19[] =
 "\r\n"
 "void COMPONENTCLASS::paint (Graphics& g)\r\n"
 "{\r\n"
+<<<<<<< HEAD
 <<<<<<< HEAD
 "    /* This demo code just fills the component's background and\r\n"
 "       draws some placeholder text to get you started.\r\n"
@@ -2337,6 +2342,8 @@ static const unsigned char temp_binary_data_19[] =
 =======
 "    // This demo code just fills the component's background and\r\n"
 "    // draws some placeholder text to get you started.\r\n"
+=======
+>>>>>>> 879e4aa94... BCC: mac cleanup
 "    g.fillAll (Colour (0xffaa7711));\r\n"
 "    g.setFont (Font (16.0f));\r\n"
 "    g.setColour (Colours::white);\r\n"
@@ -2346,10 +2353,9 @@ static const unsigned char temp_binary_data_19[] =
 "\r\n"
 "void COMPONENTCLASS::resized()\r\n"
 "{\r\n"
-"    // This method is where you should set the bounds of any child\r\n"
-"    // components that your component contains..\r\n"
 "\r\n"
-"}\r\n";
+"}\r\n"
+"\r\n";
 
 const char* jucer_NewComponentTemplate_cpp = (const char*) temp_binary_data_19;
 
@@ -2381,7 +2387,8 @@ static const unsigned char temp_binary_data_20[] =
 "\r\n"
 "private:\r\n"
 "    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (COMPONENTCLASS)\r\n"
-"};\r\n";
+"};\r\n"
+"\r\n";
 
 const char* jucer_NewComponentTemplate_h = (const char*) temp_binary_data_20;
 
@@ -2393,7 +2400,10 @@ static const unsigned char temp_binary_data_21[] =
 "    Author:  AUTHOR\r\n"
 "*/\r\n"
 "\r\n"
-"INCLUDE_CORRESPONDING_HEADER\r\n";
+"INCLUDE_CORRESPONDING_HEADER\r\n"
+"\r\n"
+"//==============================================================================\r\n"
+"\r\n";
 
 const char* jucer_NewCppFileTemplate_cpp = (const char*) temp_binary_data_21;
 
@@ -2410,6 +2420,7 @@ static const unsigned char temp_binary_data_22[] =
 =======
 "#pragma once\r\n"
 "\r\n"
+"//==============================================================================\r\n"
 "\r\n";
 >>>>>>> cc46d4113... BCC: juce resaved with new ver
 
@@ -2437,8 +2448,6 @@ static const unsigned char temp_binary_data_23[] =
 "public:\r\n"
 "    COMPONENTCLASS()\r\n"
 "    {\r\n"
-"        // In your constructor, you should add any child components, and\r\n"
-"        // initialise any special settings that your component needs.\r\n"
 "\r\n"
 "    }\r\n"
 "\r\n"
@@ -2476,14 +2485,13 @@ static const unsigned char temp_binary_data_23[] =
 "\r\n"
 "    void resized() override\r\n"
 "    {\r\n"
-"        // This method is where you should set the bounds of any child\r\n"
-"        // components that your component contains..\r\n"
 "\r\n"
 "    }\r\n"
 "\r\n"
 "private:\r\n"
 "    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (COMPONENTCLASS)\r\n"
-"};\r\n";
+"};\r\n"
+"\r\n";
 
 const char* jucer_NewInlineComponentTemplate_h = (const char*) temp_binary_data_23;
 
@@ -2538,15 +2546,12 @@ static const unsigned char temp_binary_data_24[] =
 "\r\n"
 "    void paint (Graphics& g) override\r\n"
 "    {\r\n"
-"        // You can add your component specific drawing code here!\r\n"
-"        // This will draw over the top of the openGL background.\r\n"
+"\r\n"
 "    }\r\n"
 "\r\n"
 "    void resized() override\r\n"
 "    {\r\n"
-"        // This is called when the MainContentComponent is resized.\r\n"
-"        // If you add any child components, this is where you should\r\n"
-"        // update their positions.\r\n"
+"\r\n"
 "    }\r\n"
 "\r\n"
 "\r\n"
@@ -2557,7 +2562,8 @@ static const unsigned char temp_binary_data_24[] =
 "};\r\n"
 "\r\n"
 "// (This function is called by the app startup code to create our main component)\r\n"
-"Component* createMainContentComponent()    { return new MainContentComponent(); }\r\n";
+"Component* createMainContentComponent()    { return new MainContentComponent(); }\r\n"
+"\r\n";
 
 const char* jucer_OpenGLComponentTemplate_cpp = (const char*) temp_binary_data_24;
 
@@ -12855,15 +12861,16 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0x4d0721bf:  numBytes = 746; return jucer_AudioPluginEditorTemplate_h;
         case 0x51b49ac5:  numBytes = 5251; return jucer_AudioPluginFilterTemplate_cpp;
         case 0x488afa0a:  numBytes = 2002; return jucer_AudioPluginFilterTemplate_h;
-        case 0xabad7041:  numBytes = 1725; return jucer_ComponentTemplate_cpp;
-        case 0xfc72fe86:  numBytes = 1543; return jucer_ComponentTemplate_h;
-        case 0x0b66646c:  numBytes = 742; return jucer_ContentCompTemplate_cpp;
-        case 0x6fa10171:  numBytes = 651; return jucer_ContentCompTemplate_h;
-        case 0x28d496ad:  numBytes = 881; return jucer_InlineComponentTemplate_h;
+        case 0xabad7041:  numBytes = 1727; return jucer_ComponentTemplate_cpp;
+        case 0xfc72fe86:  numBytes = 1545; return jucer_ComponentTemplate_h;
+        case 0x0b66646c:  numBytes = 584; return jucer_ContentCompTemplate_cpp;
+        case 0x6fa10171:  numBytes = 653; return jucer_ContentCompTemplate_h;
+        case 0x28d496ad:  numBytes = 614; return jucer_InlineComponentTemplate_h;
         case 0x8905395b:  numBytes = 470; return jucer_MainConsoleAppTemplate_cpp;
         case 0x5e5ea047:  numBytes = 1992; return jucer_MainTemplate_NoWindow_cpp;
         case 0xda2391f8:  numBytes = 3848; return jucer_MainTemplate_SimpleWindow_cpp;
         case 0x400bc026:  numBytes = 3582; return jucer_MainTemplate_Window_cpp;
+<<<<<<< HEAD
         case 0xf4842835:  numBytes = 935; return jucer_NewComponentTemplate_cpp;
         case 0xe7bf237a:  numBytes = 469; return jucer_NewComponentTemplate_h;
         case 0x02a2a077:  numBytes = 94; return jucer_NewCppFileTemplate_cpp;
@@ -12871,6 +12878,14 @@ const char* getNamedResource (const char* resourceNameUTF8, int& numBytes) throw
         case 0x36e634a1:  numBytes = 1008; return jucer_NewInlineComponentTemplate_h;
         case 0x7fbac252:  numBytes = 1579; return jucer_OpenGLComponentTemplate_cpp;
 >>>>>>> cc46d4113... BCC: juce resaved with new ver
+=======
+        case 0xf4842835:  numBytes = 563; return jucer_NewComponentTemplate_cpp;
+        case 0xe7bf237a:  numBytes = 471; return jucer_NewComponentTemplate_h;
+        case 0x02a2a077:  numBytes = 180; return jucer_NewCppFileTemplate_cpp;
+        case 0x0842c43c:  numBytes = 164; return jucer_NewCppFileTemplate_h;
+        case 0x36e634a1:  numBytes = 739; return jucer_NewInlineComponentTemplate_h;
+        case 0x7fbac252:  numBytes = 1277; return jucer_OpenGLComponentTemplate_cpp;
+>>>>>>> 879e4aa94... BCC: mac cleanup
         case 0x406db5c1:  numBytes = 3117; return background_logo_svg;
         case 0x4a0cfd09:  numBytes = 151; return background_tile_png;
         case 0xe3430362:  numBytes = 1819; return close_png;

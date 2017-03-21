@@ -4,14 +4,13 @@
     Author:  AUTHOR
 */
 
-INCLUDE_JUCE
 INCLUDE_CORRESPONDING_HEADER
+
+INCLUDE_JUCE
 
 //==============================================================================
 COMPONENTCLASS::COMPONENTCLASS()
 {
-    // In your constructor, you should add any child components, and
-    // initialise any special settings that your component needs.
 
 }
 
@@ -33,8 +32,6 @@ void COMPONENTCLASS::paint (Graphics& g)
 
 void COMPONENTCLASS::resized()
 {
-    // This method is where you should set the bounds of any child
-    // components that your component contains..
 
 }
 

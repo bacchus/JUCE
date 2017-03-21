@@ -19,7 +19,7 @@ CONTENTCOMPCLASS::~CONTENTCOMPCLASS()
 
 void CONTENTCOMPCLASS::paint (Graphics& g)
 {
-    g.fillAll (Colour (0xeeaa7711));
+    g.fillAll (Colour (0xffaa7711));
     g.setFont (Font (16.0f));
     g.setColour (Colours::white);
     g.drawText ("CONTENTCOMPCLASS", getLocalBounds(), Justification::centred, true);
@@ -27,8 +27,6 @@ void CONTENTCOMPCLASS::paint (Graphics& g)
 
 void CONTENTCOMPCLASS::resized()
 {
-    // This is called when the CONTENTCOMPCLASS is resized.
-    // If you add any child components, this is where you should
-    // update their positions.
+
 }
 
