@@ -177,7 +177,13 @@ ProjectExporter* ProjectExporter::createExporter (Project& project, const ValueT
 
     //jassert (exp != nullptr);
     if (exp == nullptr)
-        DBG("jassert (exp != nullptr);");
+    {
+        String msg;
+        msg << __FILE__ << ":" << __LINE__;
+        AlertWindow::showMessageBox (AlertWindow::WarningIcon,
+                                     TRANS("ProjectExporter is null"),
+                                     msg);
+    }
     return exp;
 }
 
