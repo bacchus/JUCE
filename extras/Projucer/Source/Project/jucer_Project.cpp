@@ -1561,11 +1561,7 @@ bool Project::ExporterIterator::next()
 
     if (exporter == nullptr)
     {
-        String msg;
-        msg << __FILE__ << ":" << __LINE__;
-        AlertWindow::showMessageBox (AlertWindow::WarningIcon,
-                                     TRANS("project.createExporter is null"),
-                                     msg);
+        jassertfalse; // corrupted project file?
         return next();
     }
 

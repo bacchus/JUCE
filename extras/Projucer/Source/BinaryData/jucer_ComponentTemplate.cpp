@@ -1,13 +1,20 @@
 /*
-    auto-generated GUI class
-    Created with Projucer version: %%version%%
+  ==============================================================================
 
-    FILENAME
-    Created: DATE
-    Author:  AUTHOR
+  This is an automatically generated GUI class created by the Projucer!
 
-    only the code within the "//[xyz]" and "//[/xyz]"
-    sections will stay when the file is re-saved.
+  Be careful when adding custom code to these files, as only the code within
+  the "//[xyz]" and "//[/xyz]" sections will be retained when the file is loaded
+  and re-saved.
+
+  Created with Projucer version: %%version%%
+
+  ------------------------------------------------------------------------------
+
+  The Projucer is part of the JUCE library - "Jules' Utility Class Extensions"
+  Copyright (c) 2015 - ROLI Ltd.
+
+  ==============================================================================
 */
 
 //[Headers] You can add your own extra header files here...
@@ -65,4 +72,3 @@ END_JUCER_METADATA
 %%staticMemberDefinitions%%
 //[EndFile] You can add extra defines here...
 //[/EndFile]
-

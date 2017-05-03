@@ -1,7 +1,11 @@
 /*
+  ==============================================================================
+
     FILENAME
     Created: DATE
     Author:  AUTHOR
+
+  ==============================================================================
 */
 
 #pragma once
@@ -9,11 +13,9 @@
 INCLUDE_JUCE
 
 //==============================================================================
-/**
- * COMPONENTCLASS
- */
-class COMPONENTCLASS
-        : public Component
+/*
+*/
+class COMPONENTCLASS    : public Component
 {
 public:
     COMPONENTCLASS();
@@ -25,4 +27,3 @@ public:
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (COMPONENTCLASS)
 };
-

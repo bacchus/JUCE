@@ -89,11 +89,6 @@ public:
     virtual bool isCodeBlocks() const    = 0;
     virtual bool isMakefile() const      = 0;
     virtual bool isAndroidStudio() const = 0;
-<<<<<<< HEAD
-=======
-    virtual bool isAndroidAnt() const    = 0;
-    //TODO: virtual bool isQtCreator() const     = 0;
->>>>>>> 40a0663e1... BCC: 1-st Qt merges
 
     // operating system targeted by exporter
     virtual bool isAndroid() const = 0;
@@ -153,9 +148,6 @@ public:
 
     Value getExternalLibraries()                { return getSetting (Ids::externalLibraries); }
     String getExternalLibrariesString() const   { return getSearchPathsFromString (getSettingString (Ids::externalLibraries)).joinIntoString (";"); }
-
-    Value getPrecompiledHeaderValue()           { return getSetting (Ids::precompiledHeader); }
-    String getPrecompiledHeaderString() const   { return getSettingString (Ids::precompiledHeader).replaceCharacters ("\r\n", "  "); }
 
     Value getUserNotes()                        { return getSetting (Ids::userNotes); }
 

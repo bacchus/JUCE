@@ -1,19 +1,22 @@
 /*
-    FILENAME
-    Created: DATE
-    Author:  AUTHOR
+  ==============================================================================
+
+    This file was auto-generated!
+
+    It contains the basic framework code for a JUCE plugin editor.
+
+  ==============================================================================
 */
 
 #pragma once
 
 EDITORHEADERS
 
+
 //==============================================================================
 /**
- * EDITORCLASSNAME
- */
-class EDITORCLASSNAME
-        : public AudioProcessorEditor
+*/
+class EDITORCLASSNAME  : public AudioProcessorEditor
 {
 public:
     EDITORCLASSNAME (FILTERCLASSNAME&);

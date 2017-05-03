@@ -56,7 +56,7 @@ Array<ProjectExporter::ExporterTypeInfo> ProjectExporter::getExporterTypes()
     addType (types, AndroidProjectExporter::getName(),           BinaryData::export_android_svg,        BinaryData::export_android_svgSize);
     addType (types, CodeBlocksProjectExporter::getNameWindows(), BinaryData::export_codeBlocks_svg,     BinaryData::export_codeBlocks_svgSize);
     addType (types, CodeBlocksProjectExporter::getNameLinux(),   BinaryData::export_codeBlocks_svg,     BinaryData::export_codeBlocks_svgSize);
-    addType (types, QtCreatorProjectExporter::getNameQtCreator(),BinaryData::projectIconQtCreator_png,      BinaryData::projectIconQtCreator_pngSize);
+    addType (types, QtCreatorProjectExporter::getNameQtCreator(),BinaryData::projectIconQtCreator_png,  BinaryData::projectIconQtCreator_pngSize);
 
     return types;
 }
@@ -76,7 +76,7 @@ ProjectExporter* ProjectExporter::createNewExporter (Project& project, const int
         case 6:     exp = new AndroidProjectExporter       (project, ValueTree (AndroidProjectExporter       ::getValueTreeTypeName())); break;
         case 7:     exp = new CodeBlocksProjectExporter    (project, ValueTree (CodeBlocksProjectExporter    ::getValueTreeTypeName (CodeBlocksProjectExporter::windowsTarget)), CodeBlocksProjectExporter::windowsTarget); break;
         case 8:     exp = new CodeBlocksProjectExporter    (project, ValueTree (CodeBlocksProjectExporter    ::getValueTreeTypeName (CodeBlocksProjectExporter::linuxTarget)),   CodeBlocksProjectExporter::linuxTarget); break;
-        case 13:    exp = new QtCreatorProjectExporter     (project, ValueTree (QtCreatorProjectExporter     ::getValueTreeTypeName())); break;
+        case 9:     exp = new QtCreatorProjectExporter     (project, ValueTree (QtCreatorProjectExporter     ::getValueTreeTypeName())); break;
         default:    jassertfalse; return 0;
     }
 
@@ -175,15 +175,7 @@ ProjectExporter* ProjectExporter::createExporter (Project& project, const ValueT
     if (exp == nullptr)    exp = CodeBlocksProjectExporter    ::createForSettings (project, settings);
     if (exp == nullptr)    exp = QtCreatorProjectExporter     ::createForSettings (project, settings);
 
-    //jassert (exp != nullptr);
-    if (exp == nullptr)
-    {
-        String msg;
-        msg << __FILE__ << ":" << __LINE__;
-        AlertWindow::showMessageBox (AlertWindow::WarningIcon,
-                                     TRANS("ProjectExporter is null"),
-                                     msg);
-    }
+    jassert (exp != nullptr);
     return exp;
 }
 
@@ -202,10 +194,9 @@ bool ProjectExporter::canProjectBeLaunched (Project* project)
             MSVCProjectExporterVC2017::getValueTreeTypeName(),
            #elif JUCE_LINUX
             // (this doesn't currently launch.. not really sure what it would do on linux)
-            //NOTE: launch QtCreator =)
             //MakefileProjectExporter::getValueTreeTypeName(),
            #endif
-            AndroidStudioProjectExporter::getValueTreeTypeName(),
+            AndroidProjectExporter::getValueTreeTypeName(),
             QtCreatorProjectExporter::getValueTreeTypeName(),
 
             nullptr
@@ -610,7 +601,7 @@ static bool areCompatibleExporters (const ProjectExporter& p1, const ProjectExpo
     return (p1.isVisualStudio() && p2.isVisualStudio())
         || (p1.isXcode() && p2.isXcode())
         || (p1.isMakefile() && p2.isMakefile())
-        || (p1.isAndroid() && p2.isAndroid())
+        || (p1.isAndroidStudio() && p2.isAndroidStudio())
         //TODO: || (p1.isQtCreator() && p2.isQtCreator())
         || (p1.isCodeBlocks() && p2.isCodeBlocks() && p1.isWindows() != p2.isLinux());
 }

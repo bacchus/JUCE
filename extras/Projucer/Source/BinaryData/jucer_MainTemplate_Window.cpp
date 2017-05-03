@@ -1,10 +1,15 @@
 /*
-    FILENAME
-    Created: DATE
-    Author:  AUTHOR
+  ==============================================================================
+
+    This file was auto-generated!
+
+    It contains the basic startup code for a Juce application.
+
+  ==============================================================================
 */
 
 APPHEADERS
+
 
 //==============================================================================
 class APPCLASSNAME  : public JUCEApplication
@@ -62,7 +67,7 @@ public:
         {
             setUsingNativeTitleBar (true);
             setContentOwned (new CONTENTCOMPCLASS(), true);
-            setResizable(true, true);
+
             centreWithSize (getWidth(), getHeight());
             setVisible (true);
         }
@@ -93,4 +98,3 @@ private:
 //==============================================================================
 // This macro generates the main() routine that launches the app.
 START_JUCE_APPLICATION (APPCLASSNAME)
-
