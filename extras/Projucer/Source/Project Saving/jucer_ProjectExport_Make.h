@@ -404,7 +404,7 @@ public:
     {
         vst3Path.referTo (Value (new DependencyPathValueSource (getSetting (Ids::vst3Folder),
                                                                 Ids::vst3Path,
-                                                                TargetOS::linux)));
+                                                                TargetOS::oslinux)));
     }
 
 private:

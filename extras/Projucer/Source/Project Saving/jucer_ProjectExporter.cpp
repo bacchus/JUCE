@@ -125,6 +125,9 @@ String ProjectExporter::getValueTreeNameForExporter (const String& exporterName)
     if (exporterName == CodeBlocksProjectExporter::getNameWindows())
         return CodeBlocksProjectExporter::getValueTreeTypeName (CodeBlocksProjectExporter::CodeBlocksOS::windowsTarget);
 
+    if (exporterName == QtCreatorProjectExporter::getNameQtCreator())
+        return QtCreatorProjectExporter::getValueTreeTypeName();
+
     return {};
 }
 
@@ -141,6 +144,7 @@ StringArray ProjectExporter::getAllDefaultBuildsFolders()
     folders.add (getDefaultBuildsRootFolder() + "CodeBlocksWindows");
     folders.add (getDefaultBuildsRootFolder() + "CodeBlocksLinux");
     folders.add (getDefaultBuildsRootFolder() + "Android");
+    folders.add (getDefaultBuildsRootFolder() + "QtCreator");
 
     return folders;
 }
@@ -351,8 +355,8 @@ void ProjectExporter::addSettingsForProjectType (const ProjectType& type)
 void ProjectExporter::addVSTPathsIfPluginOrHost()
 {
     if (shouldBuildTargetType (ProjectType::Target::VST3PlugIn) || project.isVST3PluginHost())
-            addVST3FolderToPath();
-    }
+        addVST3FolderToPath();
+}
 
 void ProjectExporter::addCommonAudioPluginSettings()
 {
@@ -536,7 +540,7 @@ TargetOS::OS ProjectExporter::getTargetOSForExporter() const
 
     if      (isWindows())            targetOS = TargetOS::windows;
     else if (isOSX() || isiOS())     targetOS = TargetOS::osx;
-    else if (isLinux())              targetOS = TargetOS::linux;
+    else if (isLinux())              targetOS = TargetOS::oslinux;
     else if (isAndroid())            targetOS = TargetOS::getThisOS();
 
     return targetOS;

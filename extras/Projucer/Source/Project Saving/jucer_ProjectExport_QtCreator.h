@@ -57,7 +57,7 @@ public:
         if (getTargetLocationString().isEmpty())
             getTargetLocationValue() = getDefaultBuildsRootFolder() + "QtCreator";
 
-        initialiseDependencyPathValues();
+        //initialiseDependencyPathValues();
     }
 
     //==============================================================================
@@ -135,8 +135,8 @@ public:
         return false;
     }
 
-    Value getCppStandardValue()                 { return getSetting(Ids::cppLanguageStandard); }
-    String getCppStandardString() const         { return getSettingString(Ids::cppLanguageStandard); }
+//    Value getCppStandardValue()                 { return getSetting(Ids::cppLanguageStandard); }
+//    String getCppStandardString() const         { return getSettingString(Ids::cppLanguageStandard); }
 
 //    Value getQtAppTypeStandardValue()           { return getSetting(Ids::qtAppType); }
 //    String getQtAppTypeStandardString() const   { return settings[Ids::qtAppType]; }
@@ -146,15 +146,15 @@ public:
 
     void createExporterProperties(PropertyListBuilder& props) override {
 
-        static const char* cppStandardNames[]  = { "C++03", "C++11", nullptr };
-        static const char* cppStandardValues[] = { "-std=c++03", "-std=c++11", nullptr };
+//        static const char* cppStandardNames[]  = { "C++03", "C++11", nullptr };
+//        static const char* cppStandardValues[] = { "-std=c++03", "-std=c++11", nullptr };
 
-        props.add(new ChoicePropertyComponent(
-                           getCppStandardValue(),
-                           "C++ standard to use",
-                           StringArray(cppStandardNames),
-                           Array<var> (cppStandardValues)),
-                       "The C++ standard to specify in qt project");
+//        props.add(new ChoicePropertyComponent(
+//                           getCppStandardValue(),
+//                           "C++ standard to use",
+//                           StringArray(cppStandardNames),
+//                           Array<var> (cppStandardValues)),
+//                       "The C++ standard to specify in qt project");
 
 //        static const char* qtAppTypeNames[]  = { "Default", "Console", nullptr };
 //        static const char* qtAppTypeValues[] = { "app", "console", nullptr };
@@ -221,19 +221,19 @@ public:
 //        else if (type.isAudioPlugin())
 //            makefileIsDLL = true;
 #elif JUCE_WINDOWS
-        if (type.isStaticLibrary())
-            makefileTargetSuffix = ".lib";
-        else if (type.isDynamicLibrary())
-            makefileTargetSuffix = ".dll";
-        else if (type.isAudioPlugin())
-            makefileIsDLL = true;
+//        if (type.isStaticLibrary())
+//            makefileTargetSuffix = ".lib";
+//        else if (type.isDynamicLibrary())
+//            makefileTargetSuffix = ".dll";
+//        else if (type.isAudioPlugin())
+//            makefileIsDLL = true;
 #elif JUCE_LINUX
-        if (type.isStaticLibrary())
-            makefileTargetSuffix = ".a";
-        else if (type.isDynamicLibrary())
-            makefileTargetSuffix = ".so";
-        else if (type.isAudioPlugin())
-            makefileIsDLL = true;
+//        if (type.isStaticLibrary())
+//            makefileTargetSuffix = ".a";
+//        else if (type.isDynamicLibrary())
+//            makefileTargetSuffix = ".so";
+//        else if (type.isAudioPlugin())
+//            makefileIsDLL = true;
 #endif
     }
 
@@ -276,6 +276,23 @@ protected:
                                                   StringArray(warnNames, numElementsInArray(warnNames)),
                                                   Array<var>(warnFlags, numElementsInArray(warnFlags))));
         }
+
+        String getModuleLibraryArchName() const override
+        {
+            String archFlag = getArchitectureTypeVar();
+            String prefix ("-march=");
+
+            if (archFlag.startsWith (prefix))
+                return archFlag.substring (prefix.length());
+
+            if (archFlag == "-m64")
+                return "x86_64";
+
+            if (archFlag == "-m32")
+                return "i386";
+
+            return "$(shell uname -m)";
+        }
     };
 
     BuildConfiguration::Ptr createBuildConfig(const ValueTree& tree) const override {
@@ -283,6 +300,13 @@ protected:
     }
 
 private:
+    bool isWebBrowserComponentEnabled() const
+    {
+        static String guiExtrasModule ("juce_gui_extra");
+
+        return (project.getModules().isModuleEnabled (guiExtrasModule)
+                && project.isConfigFlagEnabled ("JUCE_WEB_BROWSER", true));
+    }
     //==============================================================================
     void initialiseDependencyPathValues() {
         vst3Path.referTo(Value(new DependencyPathValueSource(getSetting(Ids::vst3Folder),
@@ -388,21 +412,31 @@ private:
         if (config.isDebug())
             out << " -g -ggdb";
 
-        if (makefileIsDLL)
-            out << " -fPIC";
+        //if (makefileIsDLL)
+        //    out << " -fPIC -fvisibility=hidden";
 
         out << " -O" << config.getGCCOptimisationFlag()
             << " " << (replacePreprocessorTokens(config, getExtraCompilerFlagsString())).trimEnd();
 
-        String cppStandardToUse(getCppStandardString());
-        if (cppStandardToUse.isEmpty())
-            cppStandardToUse = "-std=c++11";
-        out << cppStandardToUse;
+//        String cppStandardToUse(getCppStandardString());
+//        if (cppStandardToUse.isEmpty())
+//            cppStandardToUse = "-std=c++11";
+//        out << cppStandardToUse;
+        {
+            auto cppStandard = config.project.getCppStandardValue().toString();
+
+            if (cppStandard == "latest")
+                cppStandard = "1z";
+
+            cppStandard = "-std=" + String (shouldUseGNUExtensions() ? "gnu++" : "c++") + cppStandard;
+
+            out << cppStandard;
+        }
 
         StringArray flags(makefileExtraLinkerFlags);
 
-        if (makefileIsDLL)
-            flags.add("-shared");
+        //if (makefileIsDLL)
+        //    flags.add("-shared");
 
         if (!config.isDebug())
             flags.add("-fvisibility=hidden");
@@ -645,6 +679,9 @@ private:
         out << "QMAKE_MAC_SDK = macosx10." << curentVer << newLine; //s.add ("SDKROOT = macosx10." + String (ver));
         out << "QMAKE_MACOSX_DEPLOYMENT_TARGET = " << deploymentTarget << newLine; //s.add ("MACOSX_DEPLOYMENT_TARGET = " + deploymentTarget);
 
+#elif JUCE_LINUX
+        out << "CONFIG += link_pkgconfig" << newLine;
+        out << "linux:PKGCONFIG += freetype2 libcurl x11 xext xinerama webkit2gtk-4.0 gtk+-x11-3.0" << newLine << newLine;
 #endif
         //NOTE: makes posible to have "dir1/file.cpp" and "dir2/file.cpp"
         //out << "CONFIG += object_parallel_to_source" << newLine;

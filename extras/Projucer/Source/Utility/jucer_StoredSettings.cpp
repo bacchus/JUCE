@@ -258,7 +258,7 @@ Value StoredSettings::getFallbackPathForOS (const Identifier& key, DependencyPat
 
     if      (os == TargetOS::osx)     id = Ids::osxFallback;
     else if (os == TargetOS::windows) id = Ids::windowsFallback;
-    else if (os == TargetOS::linux)   id = Ids::linuxFallback;
+    else if (os == TargetOS::oslinux)   id = Ids::linuxFallback;
 
     if (id == Identifier())
         jassertfalse;
@@ -287,12 +287,14 @@ Value StoredSettings::getFallbackPathForOS (const Identifier& key, DependencyPat
         {
             if      (os == TargetOS::windows)  v = "C:\\SDKs\\PT_90_SDK";
             else if (os == TargetOS::osx)      v = "~/SDKs/PT_90_SDK";
+            else if (os == TargetOS::oslinux)  v = "~/SDKs/PT_90_SDK";
             else                               jassertfalse; // no RTAS on this OS!
         }
         else if (key == Ids::aaxPath)
         {
             if      (os == TargetOS::windows)  v = "C:\\SDKs\\AAX";
             else if (os == TargetOS::osx)      v = "~/SDKs/AAX" ;
+            else if (os == TargetOS::oslinux)  v = "~/SDKs/AAX" ;
             else                               jassertfalse; // no AAX on this OS!
         }
         else if (key == Ids::androidSDKPath)

@@ -63,3 +63,7 @@ extras/Projucer/JUCECompileEngine.dylib
 Builds/
 JuceLibraryCode/
 xmls/
+/Bccjucer
+/Projucer
+
+

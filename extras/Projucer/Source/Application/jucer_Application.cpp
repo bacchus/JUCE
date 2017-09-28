@@ -626,8 +626,8 @@ void ProjucerApplication::getCommandInfo (CommandID commandID, ApplicationComman
 
             result.setInfo (isLoggedIn
                                ? String ("Sign out ") + username + "..."
-                           : String ("Sign in..."),
-                        "Log out of your JUCE account", CommandCategories::general, 0);
+                               : String ("Sign in..."),
+                            "Log out of your JUCE account", CommandCategories::general, 0);
         }
         break;
 

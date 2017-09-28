@@ -60,7 +60,7 @@ public:
 
         if      (os == TargetOS::osx)     osSelector.setSelectedId (1);
         else if (os == TargetOS::windows) osSelector.setSelectedId (2);
-        else if (os == TargetOS::linux)   osSelector.setSelectedId (3);
+        else if (os == TargetOS::oslinux)   osSelector.setSelectedId (3);
 
         updateFilePathPropertyComponents();
     }
@@ -122,7 +122,7 @@ private:
         {
             case 1: selectedOS = TargetOS::osx;     break;
             case 2: selectedOS = TargetOS::windows; break;
-            case 3: selectedOS = TargetOS::linux;   break;
+            case 3: selectedOS = TargetOS::oslinux;   break;
             default:                                break;
         }
 
@@ -138,7 +138,7 @@ private:
             addAndMakeVisible (pathPropertyComponents.add (new FilePathPropertyComponent (settings.getStoredPath (Ids::vst3Path),
                                                                                           "VST3 SDK", true)));
 
-            if (selectedOS == TargetOS::linux)
+            if (selectedOS == TargetOS::oslinux)
             {
                 addAndMakeVisible (pathPropertyComponents.add (new FilePathPropertyComponent (Value(), "RTAS SDK", true)));
                 pathPropertyComponents.getLast()->setEnabled (false);
@@ -171,7 +171,7 @@ private:
             addAndMakeVisible (pathPropertyComponents.add (new TextPropertyComponent (settings.getFallbackPathForOS (Ids::vst3Path, selectedOS),
                                                                                       "VST3 SDK", maxChars, false)));
 
-            if (selectedOS == TargetOS::linux)
+            if (selectedOS == TargetOS::oslinux)
             {
                 addAndMakeVisible (pathPropertyComponents.add (new TextPropertyComponent (Value(), "RTAS SDK", maxChars, false)));
                 pathPropertyComponents.getLast()->setEnabled (false);
